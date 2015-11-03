@@ -67,6 +67,54 @@ print('\nUsing the generator expression, sum')
 print(sum(person[2] for person in people))
 
 #append and extend can add records to a list
+print('\nAppend new record')
 people.append(['Tom', 50, 0, None])
 print(len(people))
 print(people[-1][0])
+
+#field labels allows a list index to be associated with a name
+print('\nField labels can be used to reference list positions')
+NAME, AGE, PAY = range(3)
+print(NAME, AGE, PAY)
+bob = ['Bob Smith', 42, 10000]
+print(bob[NAME])
+print(PAY, bob[PAY])
+
+#a lists of lists would allow for field names to be directly associated
+#with values in a list
+print('\nField labels as embedded lists')
+bob = [['name', 'Bob Smith'], ['age', 42], ['pay', 10000]]
+sue = [['name', 'Sue Jones'], ['age', 45], ['pay', 20000]]
+people = [bob, sue]
+#while this method does allow a given field label to forever be associated with
+#a particular value, calling still must be done by indexing by position
+for person in people:
+    print(person[0][1], person[2][1]) #prints name and pay
+for person in people:
+    print(person[0][1].split()[-2]) #get first names
+    person[2][1] *= 1.10 #give 10% raise
+for person in people:
+    print(person[2])
+
+#all the above has really done is add an extra level of positional indexing
+#to do better the field names could be inspected within a loop
+#using tuple assignment to unpack name/value pairs
+print('\nUsing tuple assignment to search for field names')
+for person in people:
+    for (name, value) in person:
+        if name == 'name': print(value) #find a specific field
+
+#better is coding a fetcher function to automatically search
+print('\nUsing automatic fetching function')
+def field(record, label):
+    for (fname, fvalue) in record:
+        if fname == label:
+            return fvalue
+
+print(field(bob, 'name'))
+print(field(sue, 'pay'))
+
+for rec in people:
+    print(field(rec, 'age')) #print all ages
+
+#in the end it is more convenient to just use dictionaries when possible
