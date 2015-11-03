@@ -63,6 +63,10 @@ print('\nUsing the map generator from 3.x')
 pays = map((lambda x: x[2]), people)
 print(list(pays))
 
-print('Using the generator expression; sum')
+print('\nUsing the generator expression, sum')
 print(sum(person[2] for person in people))
 
+#append and extend can add records to a list
+people.append(['Tom', 50, 0, None])
+print(len(people))
+print(people[-1][0])
