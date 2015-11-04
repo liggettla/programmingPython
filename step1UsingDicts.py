@@ -14,6 +14,7 @@ bob = dict(name = 'Bob Smith', age = 42, pay = 30000, job = 'dev')
 sue = dict(name = 'Sue Jones', age = 45, pay = 40000, job = 'hdw')
 print(bob)
 
+#dictionares can be created one field at a time
 print('\nDictionaries can be also created one field at a time')
 sue = {}
 sue['name'] = 'Sue Jones'
@@ -39,4 +40,13 @@ record2 = dict.fromkeys(fields, )
 print(record)
 print(record2)
 
+#lists of dictionaries
+print('\nLists of dictionaries')
+people = [bob, sue]
+for person in people:
+    print(person['name'], person['pay'], sep=', ') #separation char, only works in python 3.x
 
+for person in people:
+    if person['name'] == 'Sue Jones':
+        print(person['pay'])
+#pg 52
