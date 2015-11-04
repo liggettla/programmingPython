@@ -21,3 +21,22 @@ sue['age'] = 45
 sue['pay'] = 40000
 sue['job'] = 'hdw'
 print(sue)
+
+#dictionaries can also be made by zipping together name and
+#value lists
+print('\nZipping together names and values')
+names = ['name', 'age', 'pay', 'job']
+values = ['Sue Jones', 45, 40000, 'hdw']
+print(list(zip(names, values)))
+print(dict(zip(names, values)))
+
+#empty dictionaries can also be initialized in the same way the same
+#value can be set for every initialized key
+print('\nEmpty dictionary creation')
+fields = ('name', 'age', 'job', 'pay')
+record = dict.fromkeys(fields, '?')
+record2 = dict.fromkeys(fields, )
+print(record)
+print(record2)
+
+
