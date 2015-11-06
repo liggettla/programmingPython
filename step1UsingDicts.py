@@ -125,5 +125,3 @@ db['tom'] = dict(name='Tom', age=50, job=None, pay=0)
 print('\n')
 pprint.pprint(db)
 print('length of db:', len(db))
-
-#pg 56
