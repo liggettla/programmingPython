@@ -49,4 +49,8 @@ for person in people:
 for person in people:
     if person['name'] == 'Sue Jones':
         print(person['pay'])
-#pg 52
+
+#iteration tools can be used here to look through positions
+print('\nIterating through dictionaries')
+names = [person['name'] for person in people]
+print(names)
