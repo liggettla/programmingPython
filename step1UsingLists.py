@@ -35,7 +35,7 @@ print('\nUsing lambda function')
 f = lambda x, y: x + y
 print(f(1,1))
 
-#the advantage of lamdab can be seen when used with map
+#the advantage of lambda can be seen when used with map
 #map takes two args, first is the name of the function, the second is a sequence
 #r = map(func, seq)
 #map then applies the function to all elements of the sequence

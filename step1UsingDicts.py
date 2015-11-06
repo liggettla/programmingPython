@@ -54,3 +54,7 @@ for person in people:
 print('\nIterating through dictionaries')
 names = [person['name'] for person in people]
 print(names)
+
+print(list(map((lambda x: x['name']), people))) #collect names
+
+print(sum(person['pay'] for person in people)) #sum all pay
