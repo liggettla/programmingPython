@@ -15,4 +15,5 @@ if __name__ == '__main__':
     for key in db:
         print(key, '=>\n ', db[key])
 
+dbfilename = 'people-file'
 
