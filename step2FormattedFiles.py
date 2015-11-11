@@ -34,6 +34,7 @@ def storeDbase(db, dbfilename=dbfilename):
 
     for key in db:
         print(key, file=dbfile)
+        #items() turns keys and values into lists
         for (name, value) in db[key].items():
             print(name + RECSEP + repr(value), file=dbfile)
         print(ENDREC, file=dbfile)
