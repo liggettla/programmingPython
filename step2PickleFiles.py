@@ -18,7 +18,34 @@ db['bob'] = bob
 db['sue'] = sue
 db['tom'] = tom
 
+#this dumps the dictionary structure to a pickle file
 import pickle
-dbfile = open('people-pickle', 'wb')
+outputFile = '/media/alex/Extra/Dropbox/Code/python/programmingPython/output/people-pickle'
+dbfile = open(outputFile, 'wb') #b is for binary output
 pickle.dump(db, dbfile)
 dbfile.close()
+
+import pprint
+dbfile = open(outputFile, 'rb')
+db = pickle.load(dbfile)
+pprint.pprint(db)
+print('\nManual record calling:')
+for key in db:
+    print(key, '=>\n ', db[key])
+print(db['sue']['name'])
+dbfile.close()
+
+#Updating a pickle file can be similar to editing a manually formatted file
+#this is as inefficient as outputting to a manually formatted file each time
+#new output is required
+dbfile = open(outputFile,'wb')
+db['sue']['pay'] *= 1.10
+db['tom']['name'] = 'Tom Tom'
+pickle.dump(db, dbfile)
+dbfile.close()
+
+print('\nEdited Pickle File')
+dbfile = open(outputFile, 'rb')
+db = pickle.load(dbfile)
+pprint.pprint(db)
+
