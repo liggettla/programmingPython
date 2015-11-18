@@ -9,7 +9,7 @@ Python's pickle module overcomes these problems by translating an in-memory pyth
 
 import pickle
 import pprint
-import glob
+from glob import glob
 '''
 glob finds all pathnames matching a specific pattern as in the following:
 glob.glob('*.gif')
@@ -58,8 +58,18 @@ pprint.pprint(db)
 
 #one way to overcome the inefficiency of rewriting the entire database to a pickle
 #file is by writing each record in a separate file
+
+#the following for-loop is saying print(key) and print(bob) because it is not iterating
+#over the bob dictionary it just prints bob rather than iterating through the bob
+#dictionary and printing keys as the following code would:
+#for key in bob:
+#   print key
 for (key, record) in [('bob', bob), ('tom', tom), ('sue', sue)]:
     recOutput = './output/' + key + '.pkl'
     recfile = open(recOutput, 'wb')
     pickle.dump(record, recfile)
     recfile.close()
+
+#the following code dumps the entire database
+for filename in glob('*.pkl')
+#pg 64
