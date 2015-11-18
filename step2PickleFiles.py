@@ -7,6 +7,15 @@ complicate the output.
 Python's pickle module overcomes these problems by translating an in-memory python object like a dictionary into a string of bytes that can be written to any file-like object, and theis can be reconstructed back into the original in-memory data structure from file.
 '''
 
+import pickle
+import pprint
+import glob
+'''
+glob finds all pathnames matching a specific pattern as in the following:
+glob.glob('*.gif')
+output: ['1.gif', 'card.gif']
+'''
+
 #this initializes data to be stored in files, pickles, and shelves
 bob = {'name':'Bob Smith', 'age':42, 'pay':30000, 'job':'dev'}
 sue = {'name':'Sue Jones', 'age':45, 'pay':40000, 'job':'hdw'}
@@ -19,13 +28,11 @@ db['sue'] = sue
 db['tom'] = tom
 
 #this dumps the dictionary structure to a pickle file
-import pickle
-outputFile = '/media/alex/Extra/Dropbox/Code/python/programmingPython/output/people-pickle'
+outputFile = './output/people-pickle'
 dbfile = open(outputFile, 'wb') #b is for binary output
 pickle.dump(db, dbfile)
 dbfile.close()
 
-import pprint
 dbfile = open(outputFile, 'rb')
 db = pickle.load(dbfile)
 pprint.pprint(db)
@@ -49,4 +56,10 @@ dbfile = open(outputFile, 'rb')
 db = pickle.load(dbfile)
 pprint.pprint(db)
 
-#pg 64
+#one way to overcome the inefficiency of rewriting the entire database to a pickle
+#file is by writing each record in a separate file
+for (key, record) in [('bob', bob), ('tom', tom), ('sue', sue)]:
+    recOutput = './output/' + key + '.pkl'
+    recfile = open(recOutput, 'wb')
+    pickle.dump(record, recfile)
+    recfile.close()
