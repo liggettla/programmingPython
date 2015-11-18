@@ -13,6 +13,7 @@ from glob import glob
 '''
 glob finds all pathnames matching a specific pattern as in the following:
 glob.glob('*.gif')
+and returns all matching filenames as a list:
 output: ['1.gif', 'card.gif']
 '''
 
@@ -70,6 +71,28 @@ for (key, record) in [('bob', bob), ('tom', tom), ('sue', sue)]:
     pickle.dump(record, recfile)
     recfile.close()
 
-#the following code dumps the entire database
-for filename in glob('*.pkl')
-#pg 64
+#the following dumps individual records to indiv pickle files allowing for
+#faster processing by only loading a single record
+print('\nOutput retrieval from individual pickle files')
+for filename in glob('./output/*.pkl'):
+    recfile = open(filename, 'rb')
+    record = pickle.load(recfile)
+    print(filename, '=>\n ', record)
+
+print('\nInput can also be specifically taken from a single record')
+suefile = open('./output/sue.pkl', 'rb')
+print(pickle.load(suefile)['name'])
+suefile.close()
+
+#the information can only be loaded once from a pickle file and must then be
+#closed again if it needs to be reloaded
+print('\nIndividual records can then be modified')
+suefile = open('./output/sue.pkl', 'rb')
+sue = pickle.load(suefile)
+suefile.close()
+suefile = open('./output/sue.pkl', 'wb')
+sue['pay'] *= 1.10
+pickle.dump(sue, suefile)
+suefile.close()
+suefile = open('./output/sue.pkl', 'rb')
+print(pickle.load(suefile))
