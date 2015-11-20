@@ -33,3 +33,17 @@ print('\nAnd manually:')
 bob = db['bob']
 print(bob.lastName())
 print(db['tom'].lastName())
+db.close()
+
+print('\nDatabase updates are as simple as with other shelves and pickles')
+db = shelve.open(classShelve)
+sue = db['sue']
+#again, after loading the shelve, the class methods are automatically imported
+sue.giveRaise(.25)
+db['sue'] = sue
+
+tom = db['tom']
+tom.giveRaise(.20)
+db['tom'] = tom
+db.close()
+
