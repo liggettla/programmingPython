@@ -10,7 +10,6 @@ fieldnames = ('name', 'age', 'job', 'pay')
 #this gets the longest length of any of the fieldnames by creating a list
 #and finding the highest number in that list
 maxfield = max(len(f) for f in fieldnames)
-print(maxfield)
 db = shelve.open(classShelve)
 
 while True:
