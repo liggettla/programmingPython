@@ -7,7 +7,10 @@ import shelve
 
 classShelve = './output/class-shelve'
 fieldnames = ('name', 'age', 'job', 'pay')
+#this gets the longest length of any of the fieldnames by creating a list
+#and finding the highest number in that list
 maxfield = max(len(f) for f in fieldnames)
+print(maxfield)
 db = shelve.open(classShelve)
 
 while True:
@@ -19,4 +22,8 @@ while True:
         print('No such key "%s"!' % key)
     else:
         for field in fieldnames:
+            #now the output is justified to the longest fieldname so they
+            #all line up
             print(field.ljust(maxfield), '=>', getattr(record, field))
+            #the following shifts everything over by 10 chars
+            #print(field.ljust(10), '=>', getattr(record, field))

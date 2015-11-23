@@ -46,4 +46,3 @@ tom = db['tom']
 tom.giveRaise(.20)
 db['tom'] = tom
 db.close()
-
