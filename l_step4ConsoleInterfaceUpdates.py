@@ -25,9 +25,10 @@ while True:
             #which seems more common
             #ie bob.age = 95
             setattr(record, field, eval(newtext))
-            #eval evaluates an expression as python syntax
+            #eval evaluates a string as python syntax
             #like the following:
-            #print(eval('x + 1'))
+            #myString = 'x + 1'
+            #print(eval(myString))
 
     db[key] = record
 db.close()
