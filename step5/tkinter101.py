@@ -6,5 +6,5 @@ def reply():
 
 window = Tk()
 button = Button(window, text='press', command=reply)
-button.pack()
+button.pack() #this places the button in the window
 window.mainloop()
